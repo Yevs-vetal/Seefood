@@ -1,0 +1,672 @@
+/* чтоб ширина контент вместе с падингами была не 1230, а 1200 */
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+}
+
+/* Подключаем шрифты */
+/* font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Slab', serif;
+font-family: 'Source Sans Pro', sans-serif; */
+
+body{
+    font-family: 'Roboto', sans-serif;
+    color: #232222;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.container{
+    max-width: 1230px;
+    margin: 0 auto;/* поставишь ширину контента по центру, а не с краю */
+    padding: 0 15px;/* для мобильной версии, чтоб не было прижато к краю */
+}
+.header__top{
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+a{
+    text-decoration: none;
+    color: inherit; /* чтоб не было синего цвета у ссылок */
+}
+
+
+
+.menu__list{
+    display: flex;
+}
+.menu__list li + li{ /*чтоб применялось ко всем кроме первого поэтомут+li */
+    padding-left: 30px;
+}
+.menu__list a:hover{ /* чтоб было подчеркивание при наведении на элемент */
+    /* text-decoration: underline; */
+    border-bottom: 1px solid  #001E64;
+}
+.menu__list a{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    text-transform: uppercase;
+    color: #001E64;
+}
+.header__phone{
+    padding-right: 30px;
+}
+.head{
+    background-image: url(../images/advantages-bg.png);  /* ставим на фон картинку */
+    /* height: 100vh;  чтоб хедер брал 100% высоты  */
+    background-repeat: no-repeat; /* чтоб не повторялась картинка */
+    background-size: cover; /* растянуть фоновую картинку на весь экран */
+    background-position: top;/* споизицинонировал по центру */
+    padding-bottom: 20px;
+    margin-top: -100px; /* поднимаем картинку выше рамок секции */
+    min-height: calc(100vh-50px); /* чтоб картинка растягивалась в зависимости от текста */
+}
+.head__title{
+    font-family: 'Roboto Slab', serif;
+    font-size: 72px;
+    line-height: 95px;
+    color: #001E64;
+    padding: 135px 0 0 112px;
+    margin-bottom: 40px; /* отсутпы сверху вниз всегда делаем мардмином  */
+    max-width: 589px;
+}
+.head-slider{
+    max-width: 522px;
+    padding: 57px 0 135px 112px;/* деалем такие отступы чтоб при увелечии количества контента никто ни на кого не налазил */
+}
+.head-slider__info-text{
+    font-family:'SF-Pro-Display-Bold';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    margin-bottom: 25px;
+    max-width: 520px;
+} 
+.head .slick-prev,
+.head .slick-next{
+    position: absolute; /* позицинионирование теперь идет отдельно от всего сайта */
+    background-color: transparent; /* прозрачный фон для стрелок */
+    border: none; /* убрать рамку со стрелок */
+    cursor: pointer; /* курсор превращается в руку */
+    padding: 0;
+    left: 40px;
+}
+.head .slick-prev{
+    top: 0;
+}
+.head .slick-next{
+    bottom: 0;
+}
+.head .slick-dots{
+    list-style: none; /* убираем маркеры */
+    position: absolute; /* позицинионирование теперь идет отдельно от всего сайта */
+    left: 35px;
+    top: 35px; /* оступ сверху создаем пространство для цифр */
+    bottom: 60px; /* оступ снизу создаем пространство для цифр */
+    display: flex; /* дклим контент на блоки */
+    flex-direction: column; /* меняем ось, делим блоки не в строку а в столбец */
+    justify-content: space-between; /* растягиваем блоки по всей ширине */
+}
+.head .slick-dots button{
+    background-color: transparent; /* убираем белый фон */
+    border: none; /* убрать рамку */
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    line-height: 28px;
+    color:#FFFFFF;
+    opacity: 0.5;
+    cursor: pointer;
+    position: absolute;
+}
+.head .slick-active button{
+    opacity: 1;
+}
+.head .slick-dots button::before{
+    content: '0'; /* вставляем 0 перед цифрами 12345 */
+    /* li:nth-child(n+10) это применяется для того, чтоб если будет 10 или более цифр чтоб ноль не добавлялся */
+}    
+.head-slider__info-btn{
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color:#FFFFFF;
+    text-transform: uppercase;
+    padding: 14px 88px; /* отсуп букв от границы кнопки */
+    background-color: rgba(255, 255,255,.5); /* в конце .5 - прозрачность */
+    border-radius: 20px;
+    margin-left: 112px;
+    display: inline-block;/*кнопка - это строчный элемент, а чтоб к ней применялись блочные стили, перевожу её в блок  */
+    transform: translateY(-100px); /* чтоб кнопка перемещалась по оси У вертикально */
+    position: absolute;
+    transition: all .5s; /* чтоб при наведении на кнопку менялся цвет ПЛАВНО */
+} 
+.head-slider__info-btn:hover{
+    background-color: rgba(255, 255,255,1);
+    color: #001E64;
+  
+}
+.head__box{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 21px;
+    color:#FFFFFF;
+}
+.head__box-language--active{
+    font-weight: 700;
+}
+.crab__slider{
+    padding-top: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+.crab__name{
+    width: 510px;
+    text-align: center;
+    padding-top: 41px;
+}
+.crab-prev{
+    position: absolute;
+    top: 0;
+    left: 0;  /* чтоб стрелка стала по центру, расширяем её блок */ 
+    right: 0; /* чтоб стрелка стала по центру, расширяем её блок */ 
+}
+.crab-prev,
+.crab-next{
+    /* position: absolute; позицинионирование теперь идет отдельно от всего сайта */
+    background-color: transparent; /* прозрачный фон для стрелок */
+    border: none; /* убрать рамку со стрелок */
+    cursor: pointer; /* курсор превращается в руку */
+    padding: 0;
+}
+.crab__name-item{
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #232222;
+    cursor: pointer; /* курсор превращается в руку */
+}
+.crab__name-item+ .crab__name-item{
+    margin-top: 30px;
+}
+.crab__name-item.slick-current{
+    font-weight: 700;
+    font-size: 36px;
+    /* line-height: 47px; отменяем высоту строки, чтоб слайдер нормально переключался*/ 
+    color: #001E64; 
+    cursor: pointer; /* курсор превращается в руку */
+}
+.crab__slider-product{
+    max-width: 600px;
+}
+.crab__slider-inner{
+    display: flex;
+    justify-content: space-between;  
+}
+.crab__slider-img{
+    object-fit: cover;  /* если картинка будет меняться, чтоб сохранить размеры и она не поплыла */ 
+    max-width: 260px;
+    max-height: 215px;
+}
+.crab__slider-list{
+    list-style: none; /* убираю черные точки списка */
+    max-width: 290px;
+}
+.crab__slider-description{
+    /* font-family: 'Roboto', sans-serif; */
+    /* font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #232222; тут всё как указал в начале на бади*/
+    margin-bottom: 30px;
+}
+.crab__slider-description span{ 
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    display: block; /* чтоб занимал всю ширину */ 
+    color: #001E64;
+    margin-bottom: 10px;
+}
+
+.crab__slider-title{
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #001E64;
+    /* padding-top: 10px; */
+    margin-bottom: 20px;
+} 
+.crab__slider-text{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    margin-bottom: 25px;
+}  
+ .crab__slider-btn{
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: #001E64;
+    text-transform: uppercase;
+    border: 1px solid #001E64;
+    border-radius: 20px; 
+    padding: 12px 85px; /* отсуп букв от границы кнопки */
+    background-color:transparent;
+    cursor: pointer;
+    transition: all .5s; /* чтоб при наведении на кнопку менялся цвет ПЛАВНО */
+} 
+.crab__slider-btn:hover{
+    background-color: #001E64;
+    color: #FFFFFF;
+}
+.seafood-box{
+    background-image: url(../images/seafood-bg.jpg);  /* ставим на фон картинку */
+    /* height: 100vh;  чтоб хедер брал 100% высоты  */
+    background-repeat: no-repeat; /* чтоб не повторялась картинка */
+    background-size: cover; /* растянуть фоновую картинку на весь экран */
+    background-position: top;/* споизицинонировал по центру */
+    /* height: 100vh;  чтоб хедер брал 100% высоты */
+    /* min-height: calc(100vh-50px); чтоб картинка растягивалась в зависимости от текста */
+    padding: 290px 0 95px;
+
+}
+.seafood-box__items{
+    display: flex;
+    justify-content: space-around;  /* добавляет отступы по краям блоков */ 
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+.seafood-box__item{
+    width: 180px ;
+    min-height: 165px ;
+     /* ставим текст по центру ракушки */ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+     /* ставим текст по центру ракушки */ 
+    background-image: url(../images/seafood-items.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; /* растянуть фоновую картинку на весь экран */
+    object-fit: cover;
+}
+.seafood{
+    padding: 100px 0;
+}
+.seafood__wraper{
+    margin-bottom: 100px;
+} 
+.seafood__info{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+.seafood__text-title{
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #001E64;
+    margin-bottom: 30px;
+    max-width: 490px;
+}
+.seafood__text-contetnt{
+    max-width: 420px;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 20px;
+} 
+.seafood__info--text-right .seafood__text-title{
+    max-width: 420px;
+}
+.seafood__info--text-right .seafood__text-contetnt{
+    margin-right: 180px;
+}
+.seafood__blockquote{
+    max-width: 800px;
+    margin: 0 auto;  /* поставить картинку по центру */ 
+}
+
+.seafood__blockquote-text{
+    max-width: 530px;
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    margin: 0 auto;
+    /* margin-bottom: 100px; */
+
+}
+.norway{
+    background-image: url(../images/norway__img.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom left; /* прижать картинку к низу с лева */
+}
+.norway__info{
+    margin-left: auto;  /* чтоб текст отодвинулся максимально в левую сторону */
+    max-width: 390px;
+    background-color: #fff;  /* когда текст накладывается на картинку чтоб его фон был белый */ 
+    padding: 35px 0 35px 20px ;
+}
+.norway__info-title{
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+    line-height: 24px;
+    color: #001E64;
+    width: 195px;
+}
+.norway__info-text{
+    font-size: 18px;
+    line-height: 21px;
+    list-style: none; /* убираем маркеры */
+    margin-top: 30px;  /* чтоб отступ самого нижнего был тоже сверху */ 
+}
+.norway__info-text span{
+    display: block;  /* для того, чтоб перенести почта на строку ниже */ 
+}
+.footer{
+    padding: 25px 0 110px;
+}
+.footer__inner{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+.footer__social{
+    padding-bottom: 20px;
+}
+.footer__social-link + .footer__social-link{ /* отступ у всех кроме первого */
+    margin-left: 10px;
+}
+.footer__inner .menu{
+    padding-bottom: 30px;
+}
+/* чтоб при наведении на иконку менялся цвет */
+.footer__social-link:hover path{
+    fill: #001E64;
+}
+/* чтоб при наведении на иконку менялся цвет ПЛАВНО */
+.footer__social-link path{
+    transition: all .5s;
+}
+
+/* создаем бургер */
+.menu-btn{
+    width: 40px;
+    padding: 13px 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    display: none;
+    z-index: 10; /* кнопка будет всегда поверх выпадающего списка */
+    
+}
+.menu-btn::after,
+.menu-btn::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: #001E64;
+}
+.menu-btn::before{
+    top: 0;
+}
+.menu-btn::after{
+    bottom: 0;
+}
+.menu-btn span{
+    display: block;
+    background-color: #001E64;
+    height: 4px;
+}
+
+@media(max-width: 1160px){
+    .crab__name{
+        width: 350px;
+    }
+    .footer .logo,
+    .footer .menu {
+        display: none;
+    }
+    .footer {
+        padding: 40px 0 40px;
+    }
+    .footer__inner{
+        justify-content: center;
+    }
+    .footer__social {
+        padding-bottom: 0;
+    }
+}
+
+@media(max-width: 1100px) {
+    .seafood__text{
+        padding-right: 20px;
+    }
+    .seafood__info--text-right .seafood__text{
+        padding-right: 0;
+        padding-left: 20px;
+    }
+}
+
+@media(max-width: 1000px){
+    .menu__list{
+        position: absolute;
+        left: 20%;
+        right: 20%;
+        background-color: #fff;
+        display: block;
+        top: -350px; /* убираем меню наверх чтоб при нажатии она спускалась  */
+        transition: all .5s; /* чтоб меню выезжало плавно */
+        z-index: 5; /* чтоб его текст был выше текста слайдера */
+        
+    }
+    .menu__list.menu__list--active{
+        top: 75px;
+    }
+    .menu__link:hover{
+        border: none;
+    }
+    .menu-btn{
+        display: block;
+    }
+    .menu{
+        margin-left: auto;
+        margin-right: 20px;
+    }
+    .menu__list li + li{ /*чтоб применялось ко всем кроме первого поэтомут+li */
+        padding-left: 0;
+    }
+    .menu__link{
+        display: block;
+        padding: 20px 0;
+        text-align: center;
+        pointer-events: none; /* убираем подчеркивание  */
+        cursor: pointer;
+        
+    }
+    .crab__name{
+        width: 250px;
+    }
+}
+@media(max-width: 950px){
+    .seafood__info{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .seafood img {  /* чтоб при уменьшении поля страниц все картинки уменьшались за экраном */
+        max-width: 100%;
+    }
+    .seafood__info--text-right{
+        flex-wrap: wrap-reverse; /* чтоб не было две картинки подряд  */
+    }
+    .seafood__text{
+        padding-right: 0;
+    }
+    .seafood__info--text-right .seafood__text{
+        padding-left: 0;
+    }
+    .seafood__text-title,
+    .seafood__text-contetnt{
+        max-width: 100%;
+    }
+    .seafood__info--text-right .seafood__text-contetnt {
+        margin-right: 0;
+    }    
+     
+}
+@media(max-width: 890px){
+    .crab__slider {
+        display: block;
+    }
+    .crab__slider-product{
+        margin: 0 auto;  /* чтоб стал по центру */
+    }
+    .crab__name{
+        width: 100%;
+        padding-top: 0;
+        margin-bottom: 80px;
+    }
+    .crab__name-item + .crab__name-item{
+        margin-top: 0;
+    }
+    .crab__name-item .slick-current{
+        line-height: 45px;
+    }
+    .crab__name .slick-dots {
+        left: 0;
+        right: 0;
+        display: flex;
+        /* justify-content: space-evenly; */
+        /* /* top: 95px; */
+        flex-direction: row; /* чтоб были написаны в строчку, а не в колонку */
+        justify-content: center; 
+        list-style: none; /* убираем маркеры */
+    }
+    .crab__name .slick-dots button{
+        width: 10px;
+        height: 10px;
+        font-size: 0;
+        padding: 0;
+        border-radius: 50%;
+        background-color: #c4c4c4;
+        margin: 0 5px; 
+        border: none; /* убрать рамку со стрелок */
+    }
+    .crab__name .slick-active button{
+        background-color: #001E64;
+    } 
+}
+
+@media(max-width: 745px){
+    .head__title{
+        font-size: 55px;
+        line-height: 75px;
+        padding-left: 0;
+        text-align: center;
+        max-width: 100%;
+    }
+    .seafood-box{
+       display: none;
+    }
+    
+}
+
+@media(max-width: 650px){
+    .crab__slider-product{
+        width: 100%;
+    }
+    .seafood {
+        padding: 50px 0;
+    }
+    .seafood__wraper {
+        margin-bottom: 50px;
+    }
+    .norway{
+        background-image: none;
+    }
+    .norway__info {
+        max-width: 100%;
+        padding: 35px 0 35px 0;
+    }
+}
+
+@media(max-width: 600px) {
+    .crab__slider-inner {
+        display: block;
+    }   
+    .crab__slider-list {
+        width: 100%;
+    } 
+}
+
+    @media(max-width: 470px){
+        .head-slider{
+            padding-left: 50px;
+        }
+        .slick-dots{
+            left: 5px;
+        }
+        .slick-prev, .slick-next {
+            left: 9px;
+        }
+        .head-slider__info-btn{
+            margin-left: 50px;
+        }
+        .head__title{
+            font-size: 35px;
+            line-height: 45px;
+        }
+        .crab__slider-btn {
+            padding: 12px 55px;
+        }
+        .crab__slider {
+            padding-top: 50px;
+        }    
+    }
+
+    @media(max-width: 360px){
+        .head__title{
+            padding-top: 125px;
+        }
+        .header__phone {
+            padding-right: 0;
+        }
+        .menu__list{
+            left: 10%;
+            right: 10%;
+        }
+        .head-slider {
+            padding-left: 15px;
+            padding-top: 0;
+        }
+        .head-slider__info-btn {
+            margin-left: 0px;
+        }
+    }
+
+/*  */
+
+
